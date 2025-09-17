@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hour Vault</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="home-container">
+        <h1>Hour Vault</h1>
+        
+        <div class="cards-wrapper"> 
+            <div class="card">
+                <h2>Create a New Room</h2>
+                <input type="text" id="create-username-input" placeholder="Enter your name">
+                <label for="deletion-time">Delete chat after:</label>
+                <select id="deletion-time">
+                    <option value="3600000" selected>1 Hour</option>
+                    <option value="14400000">4 Hours</option>
+                    <option value="43200000">12 Hours</option>
+                    <option value="86400000">24 Hours</option>
+                </select>
+                <button id="create-room-btn">Create Room</button>
+            </div>
+            <div class="card">
+                <h2>Join an Existing Room</h2>
+                <input type="text" id="join-username-input" placeholder="Enter your name">
+                <input type="text" id="room-code-input" placeholder="Enter Room Code">
+                <button id="join-room-btn">Join Room</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="chat-container" class="hidden">
+        <div id="chat-header">
+            <h2>Chat Room: <span id="room-code-display"></span></h2>
+            <p>This chat is end-to-end encrypted. The room code is your private key.</p>
+        </div>
+        <div id="messages"></div>
+        <form id="message-form">
+            <input id="message-input" autocomplete="off" placeholder="Type a message..." />
+            <button>Send</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
